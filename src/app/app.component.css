@@ -1,0 +1,164 @@
+.box {
+  height: 200px;
+  width: 200px;
+  overflow-y: scroll;
+  background: darksalmon;
+}
+.orange {
+  color: orange;
+}
+.salmon {
+  color: salmon;
+}
+
+.steelblue {
+  color: steelblue;
+}
+.tomato {
+  color: tomato;
+}
+.deeppink {
+  color: deeppink;
+}
+.chartreuse {
+  color: chartreuse;
+  background: #000;
+}
+.black {
+  color: black;
+}
+
+p.else{
+  width: 50%;
+  text-align: center;
+  background-color: #000;
+  font-family: DS-Digital;
+  padding: 20px 40px;
+  font-size: 2.5em;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  box-shadow: 3px 3px 10px #990,
+             -3px -3px 10px #990;
+}
+.delete {
+  width: 40px;
+  background-color: crimson;
+  padding: 2px;
+  color: whitesmoke;
+  text-align: center; font-size: 20px;
+}
+
+.lista-vacia{
+  width: 50%;
+  text-align: center;
+  background-color: #000;
+  color: aliceblue;
+  font-weight: bold;
+  font-family: Consolas;
+  padding: 5px 10px;
+  font-size: 1em;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  box-shadow: 3px 3px 10px #990,
+              -3px -3px 10px #990;
+}
+
+div > img {
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  width: 100%;
+  height: 300px;
+  box-shadow: 0px 0px 30px #eee;
+  -webkit-box-shadow: 0px 0px 30px #eee;
+
+}
+
+div.container-card {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(250px, 1fr));
+  gap: 2em;
+
+  padding: 0;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  /* backdrop-filter: blur(10px); */
+  /* -webkit-filter: blur(5px); */
+}
+div.card {
+  /* background-color: #ccc; */
+  color: aliceblue;
+  font-weight: bold;
+  font-family: Consolas;
+  /* padding: 5px 10px; */
+  font-size: 1em;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  box-shadow: 3px 3px 10px #990,              -3px -3px 10px #990;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+    background-color: #000;
+    position: relative;
+    /* z-index: 10; */
+}
+
+div.card h3,
+div.card p {
+  padding-left: .5em;
+}
+h2.offer {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  z-index: 11;
+  text-transform: uppercase;
+  color: gold;
+  text-shadow: 1px 1px 2px #000;
+}
+.mensaje-error {
+  color: crimson;
+  font-size: 1em;
+  opacity: 0;
+}
+.mensaje-error.invalid {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+.stylegrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.line-error {
+  height: 0;
+  border-bottom: 1px solid;
+
+}
+.line-error.invalid {
+  border-color: crimson;
+}
+.line-error.valid {
+  border-color: chartreuse;
+}

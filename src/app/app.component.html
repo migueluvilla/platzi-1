@@ -1,0 +1,155 @@
+
+
+<app-form></app-form>
+
+<h1>Propiedades</h1>
+<button [disabled]="btnDisable">Enviar</button>
+<input type="text" [value]="name" />
+<hr>
+<h2>{{ 'Angular - '.repeat(5) }}</h2>
+
+<p>3 + 3 = {{ 3 + 3}}</p>
+
+<h3>Hola, soy {{ name }} y tengo {{ age }} años.</h3>
+
+<img src="{{ img }}" alt="{{ img }}" width="300" height="300">
+&nbsp;
+<img [src]="img" alt="{{ img }}" width="300" height="300" (click)="onclick($event.target)">
+
+<h3>Mi dirección es {{ address.street }}, {{ address.city }}, <span class="steelblue" > {{ address.country }} </span></h3>
+
+<hr>
+
+<h2>Eventos</h2>
+
+<button (click)="toggleButton()"> FUNCIÓN TOGGLE</button>
+<br><br><br>
+<hr>
+<br>
+
+
+<!-- capturando el evento del scroll -->
+<div class="box" (scroll)="eventScroll($event)">
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, placeat et! Culpa, provident. Tempora eveniet recusandae, perspiciatis natus ex aperiam pariatur quas voluptatem iusto eos qui itaque sunt, beatae iure laboriosam rem quo omnis nulla voluptas temporibus eaque voluptatibus reiciendis. Officia vero sed numquam adipisci voluptatibus, itaque doloribus voluptates quaerat voluptas eius maiores, sunt soluta eos nam possimus! Sit sequi, suscipit et delectus repellat est provident mollitia animi rerum? Tempora eaque, labore ut quidem corporis dolorum magni dignissimos dolore quos qui voluptatem quo, quas consectetur impedit consequatur ratione, suscipit omnis voluptatibus tempore iusto temporibus. Architecto veritatis saepe molestias ipsam aut.</p>
+</div>
+<hr>
+<!-- capturando el evento de un input -->
+<label for="city">Ciudad:</label>
+<input type="text" name="city" [value]="address.city" (keyup)="eventInput($event)"/>
+
+<hr>
+
+<h2>NGMODEL</h2>
+
+
+<!-- trabajando con el evento y la propiedad de un input con el paquete formModule-->
+
+<label for="city">country:</label>
+<!-- sin ngModel -->
+<!-- <input type="text" name="country" [value]="address.country" (keyup)="changeCountry($event)"/> -->
+<!-- con ngModel -->
+<input type="text" #nameInput="ngModel" name="country" [(ngModel)]="address.country" required/>
+<P>VALID: {{ nameInput.valid }}</P>
+<input type="number" #AgeInput="ngModel" name="age" [(ngModel)]="age" required max="18" min="10"/>
+<P>AGE: {{ AgeInput.valid }}</P>
+<hr>
+<h2>Funciones</h2>
+<button (click)="ageMinus()" style="width: 40px; background-color: gold; padding: 9px; position: relative; top:-6px; text-align: center; font-size: 25px;"> - </button>
+  <input type="text" [value]="age" style="width: 80px; text-align: center; font-size: 45px; font-family: DS-Digital; font-weight: bolder; background-color: black; color: chartreuse;"/>
+<button (click)="agePlus()" style="width: 40px; background-color: crimson; padding: 9px; position: relative; top:-6px; color: whitesmoke; text-align: center; font-size: 25px;">+</button>
+<br>
+<progress [value]="age" max="100"></progress>
+
+<hr>
+<h2>ngIf</h2>
+<p *ngIf="age <= 9" class="tomato">No permitido el acceso para Menores de 10 años</p>
+<p *ngIf="age >= 19" class="tomato">No permitido el acceso para Mayores de 18 años</p>
+<p *ngIf="age > 9 && age < 19 " class="chartreuse">¡Permitido el acceso!</p>
+<br>
+<br>
+<p *ngIf="age > 9 && age < 19; else goElseAge " class="else chartreuse">¡Permitido el acceso!</p>
+<ng-template #goElseAge>
+  <p class="else tomato">¡No permitido el acceso!</p>
+</ng-template>
+
+
+<br>
+<hr>
+<h2>ngFor</h2>
+<label for="colores">Ingresa un color a la lista:</label>
+<input type="text" name="colores" [(ngModel)]="newColor" required>
+<button (click)="addColor()">Agregar Color</button>
+<ul>
+  <li *ngIf="colors.length === 0" class="lista-vacia">¡La lista quedó vacía!</li>
+  <li *ngFor="let color of colors; index as id" style="font-size: 25px;">
+    <button (click)="deleteColor(id)" class="delete">X</button>
+    {{id+1}} - {{ color }}
+  </li>
+</ul>
+<br>
+<hr>
+<br>
+<h2>Renderizando objetos o json</h2>
+<div class="container-card">
+  <div *ngFor="let product of products" class="card">
+    <img [src]="product.image" alt="{{ product.image }}" width="300" height="300">
+    <h3>{{ product.name }}</h3>
+    <p>$ {{ product.price }}</p>
+    <p>{{ product.category }}</p>
+  </div>
+</div>
+
+<h2>OFERTAS</h2>
+<div class="container-card">
+  <div *ngFor="let product of products"  class="card">
+    <div [ngSwitch]="product.price">
+     <img [src]="product.image" alt="{{ product.image }}" width="300" height="300">
+     <h2 *ngSwitchCase="19.99" class="offer">oferta</h2>
+     <h3 >{{ product.name }}</h3>
+     <p >$ {{ product.price }}</p>
+     <p >{{ product.category }}</p>
+    </div>
+  </div>
+</div>
+
+<h2>ngClass && ngStyle: CLASS BINDING</h2>
+<label for="name">NOMBRE:</label>
+<input type="text" required #nameInput2="ngModel" name="name" [(ngModel)]="name">
+<P class="mensaje-error" [class.invalid]="nameInput2.invalid">El campo es requerido</P>
+<br>
+<label for="name1">NOMBRE:</label>
+<input type="text" required #nameInput3="ngModel" name="name1" [(ngModel)]="name">
+<P [class.invalid]="nameInput2.invalid" [style.font-style]="nameInput2.invalid ? 'italic' : 'normal'">
+  El campo es requerido
+</P>
+
+<h2>TAMAÑOS</h2>
+<div class="stylegrid">
+  <div>
+    <input type="text" required #nameInput2="ngModel" name="widthimg" [(ngModel)]="widthImg">
+  </div>
+  <div>
+    <img [src]="img" alt="{{ img }}"[style.width.px]="widthImg" height="300" (click)="onclick($event.target)">
+  </div>
+</div>
+<h2>ngClass && ngStyle</h2>
+<label for="name2">ERROR con linea de hr</label><br>
+<input type="text" required #nameInput4="ngModel" name="name2" [(ngModel)]="name">
+<hr class="line-error"
+   [ngClass]="{
+    'valid': nameInput4.valid,
+    'invalid': !nameInput4.pristine || nameInput4.touched || nameInput4.invalid,
+   }"
+   [width]="lengthName"
+
+/>
+<P class="mensaje-error" [class.invalid]="nameInput2.invalid">El campo es requerido</P>
+<br>
+<hr class="line-error"
+   [ngClass]="{
+    'valid': nameInput4.valid,
+    'invalid': !nameInput4.pristine || nameInput4.touched || nameInput4.invalid,
+   }"
+   width="6"
+/>
+<br><br><br><br><br><br><br>

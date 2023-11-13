@@ -1,0 +1,66 @@
+
+<div class="container">
+  <div class="divForm">
+    <div class="input-group">
+    <h1>facilpos</h1>
+    <form (ngSubmit)="onRegister()" #myForm="ngForm">
+        <label for="nombre">Nombre:</label><br>
+        <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              [(ngModel)]="register.name"
+              #nameInput5="ngModel"
+              required
+              class="input-error"
+              [ngClass]="{
+                          'valid':   passwordInput.valid,
+                          'invalid': passwordInput.invalid,
+                        }"
+              >
+        <P class="mensaje-error" [class.invalid]="nameInput5.invalid">* El campo es requerido</P>
+        <br>
+        <label for="email">Correo Electrónico:</label><br>
+        <input
+              type="email"
+              id="email"
+              name="email"
+              [(ngModel)]="register.email"
+              #emailInput="ngModel"
+              required
+              class="input-error"
+              [ngClass]="{
+                          'valid':   passwordInput.valid,
+                          'invalid': passwordInput.invalid,
+                        }"
+              >
+        <P class="mensaje-error" [class.invalid]="emailInput.invalid">* El campo es requerido</P>
+        <br>
+
+        <label for="password">Contraseña:</label><br>
+        <input
+              type="password"
+              id="password"
+              name="password"
+              [(ngModel)]="register.password"
+              #passwordInput="ngModel"
+              required
+              class="input-error"
+              [ngClass]="{
+                          'valid':   passwordInput.valid,
+                          'invalid': passwordInput.invalid,
+                        }"
+              >
+        <P class="mensaje-error" [class.invalid]="passwordInput.invalid">* El campo es requerido</P>
+        <br>
+
+        <button [disabled]="myForm.invalid" type="submit">
+          Registar
+        </button>
+      </form>
+    </div>
+  </div>
+  <div id="lado">
+    <img src="../../../assets/images/auth/bg11.1.png" alt="">
+  </div>
+</div>
